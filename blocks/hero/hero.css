@@ -1,5 +1,5 @@
 main .hero-container > div {
-  max-width: unset;
+  max-width:100%;
 }
   
 main .hero-container {
@@ -8,8 +8,8 @@ main .hero-container {
 
 .hero {
   position: relative;
-  padding: 32px;
-  min-height: 300px;
+  padding: 0;
+  min-height: 863px;
 }
 
 .hero h1 {
