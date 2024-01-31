@@ -3,9 +3,23 @@
   flex-direction: column;
 }
 
+.columns-container > div {
+  margin: 0%;
+}
+
 .columns img {
   width: 100%;
 }
+
+body > main > div.section.highlight.columns-container {
+  padding: 0;
+}
+
+body > main > div.section.highlight.columns-container > div {
+  max-width: 100%;
+  padding: 0;
+}
+
 
 .columns > div > div {
   order: 1;
@@ -23,7 +37,6 @@
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 32px;
   }
 
   .columns > div > div {
