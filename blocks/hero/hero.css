@@ -40,3 +40,16 @@ main .hero-container {
 body > main > div:nth-child(1) > div > div > div > div {
   padding: 149px 115px;
 }
+
+@media (width <= 600px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+  .section.hero-container > div > div > div > div {
+    padding: 93px 50px 50px 50px;
+    text-align: center;
+  }
+  .hero h3 {
+    font-size: 18px;
+  }
+}

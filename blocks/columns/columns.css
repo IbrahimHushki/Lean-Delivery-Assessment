@@ -26,6 +26,11 @@ body > main > div.section.highlight.columns-container > div {
   padding: 0;
 }
 
+.columns-wrapper p,
+.columns-wrapper h2 {
+  padding: 0 128px;
+}
+
 .columns > div > .columns-img-col {
   order: 0;
 }
@@ -39,9 +44,24 @@ body > main > div.section.highlight.columns-container > div {
     align-items: center;
     flex-direction: unset;
   }
-
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+}
+
+@media (width <= 600px) {
+  .columns-wrapper p {
+    padding: 0 50px;
+  }
+  .columns-wrapper h2 {
+    padding: 50px 50px 0px 50px;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+  }
+  .columns > div > div > p.button-container:last-child {
+    margin-bottom: 50px;
   }
 }
