@@ -1,14 +1,42 @@
 footer {
-  padding: 2rem;
-  background-color: var(--light-color);
+  padding: 43px 223px;
+  background-color:#56595C;
   font-size: var(--body-font-size-s);
+  color: white;
+  text-align: center;
+  
 }
 
 footer .footer {
+  font-size: 24px;
   max-width: 1200px;
   margin: auto;
 }
 
 footer .footer p {
   margin: 0;
+}
+
+body > footer > div > div > div > div > p:nth-child(1) {
+  font-size: 24px;
+}
+
+body > footer > div > div > div > div > p.button-container > a {
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+@media (width <= 600px) {
+  
+  footer {
+    padding: 50px;
+  }
+
+  body > footer > div > div > div > div > p:nth-child(1) {
+  font-size: 12px;
+}
+
+body > footer > div > div > div > div > p.button-container > a {
+  display: none;
+}
 }

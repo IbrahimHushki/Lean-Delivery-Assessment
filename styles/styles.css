@@ -12,12 +12,15 @@
 
 :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
   --background-color: white;
   --light-color: #eee;
   --dark-color: #ccc;
   --text-color: black;
+  --primary: #3282b8;
+  --secondary: #f5f5f5;
+  --destructrive: #bf2413;
+  --warning: #ed8843;
+  --success: #22bb33;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback;
@@ -83,26 +86,29 @@ h6 {
   font-family: var(--heading-font-family);
   font-weight: 600;
   line-height: 1.25;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
 h1 {
   font-size: 65px;
 }
+
 h2 {
   font-size: 34px;
 }
+
 h3 {
   font-size: 30px;
 }
+
 h4 {
   font-size: 24px;
 }
+
 h5 {
   font-size: var(--heading-font-size-s);
 }
+
 h6 {
   font-size: var(--heading-font-size-xs);
 }
@@ -151,48 +157,7 @@ a:hover {
   color: var(--link-hover-color);
 }
 
-/* buttons */
-a.button:any-link,
-button {
-  font-family: var(--body-font-family);
-  display: inline-block;
-  box-sizing: border-box;
-  text-decoration: none;
-  border: 2px solid transparent;
-  padding: 5px 30px;
-  text-align: center;
-  font-style: normal;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
-  margin: 16px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-radius: 30px;
-}
 
-a.button:hover,
-a.button:focus,
-button:hover,
-button:focus {
-  background-color: var(--link-hover-color);
-  cursor: pointer;
-}
-
-button:disabled,
-button:disabled:hover {
-  background-color: var(--light-color);
-  cursor: unset;
-}
-
-a.button.secondary,
-button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
-}
 
 main img {
   max-width: 100%;
@@ -211,16 +176,16 @@ main img {
   width: 100%;
 }
 
-/* sections */
+/* sections
 main .section {
   padding: 64px 16px;
-}
+} */
 
-@media (width >= 600px) {
+/* @media (width >= 600px) {
   main .section {
     padding: 64px 32px;
   }
-}
+} */
 
 @media (width >= 900px) {
   .section > div {

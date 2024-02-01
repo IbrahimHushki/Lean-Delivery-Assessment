@@ -1,7 +1,7 @@
 main .hero-container > div {
-  max-width:100%;
+  max-width: 100%;
 }
-  
+
 main .hero-container {
   padding: 0;
 }
@@ -14,9 +14,13 @@ main .hero-container {
 
 .hero h1 {
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
   color: white;
+}
+
+.hero h3 {
+  color: white;
+  margin-top: 0;
 }
 
 .hero picture {
@@ -31,4 +35,8 @@ main .hero-container {
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+body > main > div:nth-child(1) > div > div > div > div {
+  padding: 149px 115px;
 }
