@@ -28,7 +28,7 @@ function buildHeroBlock(main) {
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
     for (let i = 0; i < 2; i++) {
-      section.appendChild(buttons[i]); 
+      section.appendChild(buttons[i]);
     }
     section.append(buildBlock('hero', { elems: [picture, h1, h3] }));
     main.prepend(section);
