@@ -1,10 +1,9 @@
 footer {
   padding: 43px 223px;
-  background-color:#56595C;
+  background-color: #56595c;
   font-size: var(--body-font-size-s);
   color: white;
   text-align: center;
-  
 }
 
 footer .footer {
@@ -27,16 +26,15 @@ body > footer > div > div > div > div > p.button-container > a {
 }
 
 @media (width <= 600px) {
-  
   footer {
     padding: 50px;
   }
 
   body > footer > div > div > div > div > p:nth-child(1) {
-  font-size: 12px;
-}
+    font-size: 12px;
+  }
 
-body > footer > div > div > div > div > p.button-container > a {
-  display: none;
-}
+  body > footer > div > div > div > div > p.button-container > a {
+    display: none;
+  }
 }
