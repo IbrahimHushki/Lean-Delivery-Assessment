@@ -13,10 +13,10 @@
 :root {
   /* colors */
   --background-color: white;
-  --light-color: #eee;
-  --dark-color: #ccc;
   --text-color: black;
   --primary: #3282b8;
+  --primary-hover: #43a9ed;
+  --disabled: #a1ccf8;
   --secondary: #f5f5f5;
   --destructrive: #bf2413;
   --warning: #ed8843;
@@ -27,19 +27,6 @@
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono",
     monospace;
-
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
-  --body-font-size-xs: 16px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
-  --heading-font-size-l: 32px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 18px;
 
   /* nav height */
   --nav-height: 64px;
@@ -64,13 +51,9 @@
 }
 
 body {
-  font-size: var(--body-font-size-m);
   margin: 0;
   font-family: var(--body-font-family);
   line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--background-color);
-  display: none;
 }
 
 body.appear {
@@ -146,6 +129,13 @@ main pre {
   white-space: pre;
 }
 
+/* buttons */
+.button-container {
+  padding: 10px 20px;
+  text-align: center;
+  transition-duration: 250ms;
+}
+
 /* links */
 a:any-link {
   color: var(--link-color);
@@ -153,11 +143,8 @@ a:any-link {
 }
 
 a:hover {
-  text-decoration: underline;
-  color: var(--link-hover-color);
+  text-decoration: none;
 }
-
-
 
 main img {
   max-width: 100%;

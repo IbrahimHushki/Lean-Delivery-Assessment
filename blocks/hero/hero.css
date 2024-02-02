@@ -41,17 +41,52 @@ body > main > div:nth-child(1) > div > div > div > div {
   padding: 149px 115px;
 }
 
+.hero .button-container {
+  position: relative;
+  width: 167px;
+}
+
+.hero-container > div > div > div > div > p:nth-child(4) {
+  color: white;
+  border: 1px solid #f2f2f2;
+}
+
+.hero-container > div > div > div > div > p:nth-child(4):hover {
+  color: var(--primary);
+  background-color: white;
+}
+
+.hero-container > div > div > div > div > p:nth-child(5) {
+  bottom: 0%;
+  color: white;
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.hero-container > div > div > div > div > p:nth-child(5):hover {
+  background-color: var(--primary-hover);
+}
+
 @media (width <= 600px) {
+  .section.hero-container > div > div > div {
+    height: 100vh;
+  }
+
   .hero h1 {
     font-size: 30px;
   }
 
   .section.hero-container > div > div > div > div {
+    height: 100%;
     padding: 93px 50px 50px;
     text-align: center;
   }
 
   .hero h3 {
     font-size: 18px;
+  }
+
+  .hero .button-container {
+    width: 274px;
   }
 }
