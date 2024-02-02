@@ -54,6 +54,7 @@ body > main > div.section.highlight.columns-container > div {
 
 .columns .button-container:has(a[title='Test Drive']):hover {
   background: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
 .columns > div > .columns-img-col {
