@@ -2,18 +2,16 @@
   background-color: var(--primary);
   color: var(--secondary);
   padding: 52px 100px;
-}
-
-h4 {
-  margin: 0;
+  h4 {
+    margin: 0;
+  }
 }
 
 @media (width <= 600px) {
-.banner-container {
+  .banner-container {
     padding: 50px;
-  }
-
-h4 {
-    font-size: 16px;
+    h4 {
+      font-size: 16px;
+    }
   }
 }

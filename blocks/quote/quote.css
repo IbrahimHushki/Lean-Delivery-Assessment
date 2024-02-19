@@ -1,0 +1,8 @@
+.quote-body {
+  font-style: italic;
+}
+
+.quote__attribution {
+  font-style: normal;
+  font-weight: bold;
+}

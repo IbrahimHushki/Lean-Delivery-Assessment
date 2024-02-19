@@ -4,29 +4,26 @@ footer {
   font-size: var(--body-font-size-s);
   color: white;
   text-align: center;
+  .default-content-wrapper {
+    p:first-child {
+      font-size: 24px;
+    }
+    p.button-container > a {
+      font-size: 16px;
+      text-decoration: underline;
+    }
+    p.button-container:hover {
+      cursor: default;
+    }
+  }
 }
 
-footer .footer {
-  font-size: 24px;
+.footer {
   max-width: 1200px;
   margin: auto;
-}
-
-footer .footer p {
-  margin: 0;
-}
-
-.default-content-wrapper > p:first-child {
-  font-size: 24px;
-}
-
-.default-content-wrapper > p.button-container > a {
-  font-size: 16px;
-  text-decoration: underline;
-}
-
-.default-content-wrapper > p.button-container:hover {
-  cursor: default;
+  p {
+    margin: 0;
+  }
 }
 
 @media (width <= 600px) {
@@ -34,11 +31,12 @@ footer .footer p {
     padding: 50px;
   }
 
-  .default-content-wrapper > p:first-child {
-    font-size: 12px;
-  }
-
-  .default-content-wrapper > p.button-container > a {
-    display: none;
+  .default-content-wrapper {
+    p:first-child {
+      font-size: 12px;
+    }
+    p.button-container > a {
+      display: none;
+    }
   }
 }

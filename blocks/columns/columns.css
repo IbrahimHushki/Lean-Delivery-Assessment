@@ -1,68 +1,58 @@
-.columns > div {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--background-color);
+.columns {
+  div {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    div {
+      order: 1;
+    }
+  }
+  .button-container {
+    width: 118px;
+    margin-left: 128px;
+    padding: 10px 20px;
+    border: 1px solid var(--primary);
+  }
+  .button-container:has(a[title='Read More']) {
+    color: var(--primary);
+  }
+  .button-container:has(a[title='Test Drive']) {
+    color: white;
+    background-color: var(--primary);
+  }
+  .button-container:has(a[title='Read More']):hover {
+    color: white;
+    background-color: var(--primary);
+  }
+  .button-container:has(a[title='Test Drive']):hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+  }
+  .columns-img-col {
+    order: 0;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .columns-container > div {
   margin: 0%;
 }
 
-.columns img {
-  width: 100%;
-  height: auto;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-body > main > div.section.highlight.columns-container {
+.columns-container {
   padding: 0;
 }
 
-body > main > div.section.highlight.columns-container > div {
+.columns-wrapper {
   max-width: 100%;
   padding: 0;
-}
-
-.columns-wrapper p,
-.columns-wrapper h2 {
-  padding: 0 128px;
-}
-
-.columns .button-container {
-  width: 118px;
-  margin-left: 128px;
-  padding: 10px 20px;
-  border: 1px solid var(--primary);
-}
-
-.columns .button-container:has(a[title='Read More']) {
-  color: var(--primary);
-}
-
-.columns .button-container:has(a[title='Test Drive']) {
-  color: white;
-  background-color: var(--primary);
-}
-
-.columns .button-container:has(a[title='Read More']):hover {
-  color: white;
-  background-color: var(--primary);
-}
-
-.columns .button-container:has(a[title='Test Drive']):hover {
-  background: var(--primary-hover);
-  border-color: var(--primary-hover);
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
-  display: block;
+  p,
+  h2 {
+    padding: 0 128px;
+  }
 }
 
 @media (width >= 900px) {
@@ -78,28 +68,29 @@ body > main > div.section.highlight.columns-container > div {
 }
 
 @media (width <= 600px) {
-  .columns-wrapper p {
-    font-size: 14px;
-    margin: 0 50px;
-    padding: 14px;
-  }
-
-  .columns-wrapper h2 {
-    margin: 50px 50px 0;
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 14px;
-    font-size: 20px;
-  }
-
-  .columns > div > div > p.button-container:last-child {
-    margin-bottom: 50px;
+  .columns-wrapper {
+    p {
+      font-size: 14px;
+      margin: 0 50px;
+      padding: 14px;
+    }
+    h2 {
+      margin: 50px 50px 0;
+      margin-top: 50px;
+      margin-left: 50px;
+      margin-right: 50px;
+      padding: 14px;
+      font-size: 20px;
+    }
   }
 
   .columns .button-container {
     width: 274px;
     margin: 14px 64px;
     padding: 10px 20px;
+  }
+
+  .button-container:has(a[title='Test Drive']) {
+    margin-bottom: 50px;
   }
 }

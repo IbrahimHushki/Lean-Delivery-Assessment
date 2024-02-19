@@ -1,11 +1,27 @@
 export default function decorate(block) {
-  const quote = block.firstElementChild.firstElementChild;
+  console.log(block);
+  // Selectors
+  const quoteDiv = document.querySelector('.quote');
+  const quoteBody = block.firstElementChild;
   const attribution = block.lastElementChild;
 
-  quote.classList.add('quote-body');
-  attribution.classList.add('attribution');
+  // Create blockQuote semantic element
+  const blockQuote = document.createElement('blockquote');
+  const newQuoteBody = document.createElement('p');
+  const newQuoteAttr = document.createElement('cite');
 
-  quote.textContent =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-  attribution.textContent = 'Cicero';
+  // Add class names
+  newQuoteBody.classList.add('quote-body');
+  newQuoteAttr.classList.add('quote__attribution');
+
+  // Replace default div element with blockQuote
+  quoteDiv.replaceWith(blockQuote);
+  blockQuote.appendChild(newQuoteBody);
+  blockQuote.appendChild(newQuoteAttr);
+
+  // Add quotation marks before and after the quote
+  newQuoteBody.textContent = '"' + quoteBody.textContent.trim() + '"';
+
+  // Add "- " before attribution
+  newQuoteAttr.textContent = '- ' + attribution.textContent;
 }
