@@ -61,11 +61,11 @@
 #order-button {
   color: white;
   border: 1px solid #f2f2f2;
-}
 
-#order-button:hover {
-  color: var(--primary);
+  &:hover {
+    color: var(--primary);
   background-color: white;
+  }
 }
 
 @media (width <= 600px) {
@@ -74,7 +74,6 @@
   }
 
   .hero {
-
     h1 {
       font-size: 30px;
     }
@@ -88,7 +87,7 @@
     height: 100%;
     padding: 93px 50px 50px;
     text-align: center;
-    
+
     .button-container {
       width: 274px;
     }

@@ -11,7 +11,7 @@ export default function decorate(block) {
 
   // Add class names
   newQuoteBody.classList.add('quote-body');
-  newQuoteAttr.classList.add('quote__attribution');
+  newQuoteAttr.classList.add('attribution', 'quote__attribution');
 
   // Replace default div element with blockQuote
   quoteDiv.replaceWith(blockQuote);

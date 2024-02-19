@@ -1,5 +1,8 @@
-.columns {
+.columns-container > div {
+  margin: 50px;
+  }
 
+.columns {
   div {
     display: flex;
     flex-direction: column;
@@ -47,10 +50,6 @@
   }
 }
 
-.columns-container > div {
-  margin: 0%;
-}
-
 .columns-container {
   padding: 0;
 }
@@ -58,7 +57,7 @@
 .columns-wrapper {
   max-width: 100%;
   padding: 0;
-  
+
   p,
   h2 {
     padding: 0 128px;
@@ -79,7 +78,6 @@
 
 @media (width <= 600px) {
   .columns-wrapper {
-
     p {
       font-size: 14px;
       margin: 0 50px;
