@@ -1,36 +1,45 @@
 .columns {
+
   div {
     display: flex;
     flex-direction: column;
     background-color: var(--background-color);
+
     div {
       order: 1;
     }
   }
+
   .button-container {
     width: 118px;
     margin-left: 128px;
     padding: 10px 20px;
     border: 1px solid var(--primary);
   }
+
   .button-container:has(a[title='Read More']) {
     color: var(--primary);
   }
+
   .button-container:has(a[title='Test Drive']) {
     color: white;
     background-color: var(--primary);
   }
+
   .button-container:has(a[title='Read More']):hover {
     color: white;
     background-color: var(--primary);
   }
+
   .button-container:has(a[title='Test Drive']):hover {
     background: var(--primary-hover);
     border-color: var(--primary-hover);
   }
+
   .columns-img-col {
     order: 0;
   }
+
   img {
     display: block;
     width: 100%;
@@ -49,6 +58,7 @@
 .columns-wrapper {
   max-width: 100%;
   padding: 0;
+  
   p,
   h2 {
     padding: 0 128px;
@@ -69,11 +79,13 @@
 
 @media (width <= 600px) {
   .columns-wrapper {
+
     p {
       font-size: 14px;
       margin: 0 50px;
       padding: 14px;
     }
+
     h2 {
       margin: 50px 50px 0;
       margin-top: 50px;
