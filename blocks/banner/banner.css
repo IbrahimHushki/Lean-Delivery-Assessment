@@ -1,19 +1,19 @@
-body > main > div.section.banner-container {
+.banner-container {
   background-color: var(--primary);
   color: var(--secondary);
   padding: 52px 100px;
 }
 
-body > main > div.section.banner-container > div > div > div > div > h4 {
+h4 {
   margin: 0;
 }
 
 @media (width <= 600px) {
-  body > main > div.section.banner-container {
+.banner-container {
     padding: 50px;
   }
 
-  body > main > div.section.banner-container > div > div > div > div > h4 {
+h4 {
     font-size: 16px;
   }
 }

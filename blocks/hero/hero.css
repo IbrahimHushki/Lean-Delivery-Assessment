@@ -37,7 +37,7 @@ main .hero-container {
   height: 100%;
 }
 
-body > main > div:nth-child(1) > div > div > div > div {
+.hero-body {
   padding: 149px 115px;
 }
 
@@ -46,29 +46,30 @@ body > main > div:nth-child(1) > div > div > div > div {
   width: 167px;
 }
 
-.hero-container > div > div > div > div > p:nth-child(4) {
+#order-button {
   color: white;
   border: 1px solid #f2f2f2;
 }
 
-.hero-container > div > div > div > div > p:nth-child(5) {
+.hero-body > p:last-child {
   bottom: 0%;
   color: white;
   background-color: var(--primary);
   border: 1px solid var(--primary);
 }
 
-.hero-container > div > div > div > div > p:nth-child(4):hover {
+#order-button:hover {
   color: var(--primary);
   background-color: white;
 }
 
-.hero-container > div > div > div > div > p:nth-child(5):hover {
+.hero-body > p:last-child:hover {
   background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
 @media (width <= 600px) {
-  .section.hero-container > div > div > div {
+  .hero > div {
     height: 100vh;
   }
 
@@ -76,7 +77,7 @@ body > main > div:nth-child(1) > div > div > div > div {
     font-size: 30px;
   }
 
-  .section.hero-container > div > div > div > div {
+  .hero-body {
     height: 100%;
     padding: 93px 50px 50px;
     text-align: center;

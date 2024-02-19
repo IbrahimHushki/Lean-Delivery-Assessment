@@ -16,13 +16,17 @@ footer .footer p {
   margin: 0;
 }
 
-body > footer > div > div > div > div > p:nth-child(1) {
+.default-content-wrapper > p:first-child {
   font-size: 24px;
 }
 
-body > footer > div > div > div > div > p.button-container > a {
+.default-content-wrapper > p.button-container > a {
   font-size: 16px;
   text-decoration: underline;
+}
+
+.default-content-wrapper > p.button-container:hover {
+  cursor: default;
 }
 
 @media (width <= 600px) {
@@ -30,11 +34,11 @@ body > footer > div > div > div > div > p.button-container > a {
     padding: 50px;
   }
 
-  body > footer > div > div > div > div > p:nth-child(1) {
+  .default-content-wrapper > p:first-child {
     font-size: 12px;
   }
 
-  body > footer > div > div > div > div > p.button-container > a {
+  .default-content-wrapper > p.button-container > a {
     display: none;
   }
 }
