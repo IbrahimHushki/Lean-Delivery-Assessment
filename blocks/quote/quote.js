@@ -20,8 +20,8 @@ export default function decorate(block) {
   blockQuote.appendChild(newQuoteAttr);
 
   // Add quotation marks before and after the quote
-  newQuoteBody.textContent = '"' + quoteBody.textContent.trim() + '"';
+  newQuoteBody.textContent = `"${quoteBody.textContent.trim()}"`;
 
   // Add "- " before attribution
-  newQuoteAttr.textContent = '- ' + attribution.textContent;
+  newQuoteAttr.textContent = `- ${attribution.textContent}`;
 }
