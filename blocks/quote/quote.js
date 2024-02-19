@@ -1,5 +1,4 @@
 export default function decorate(block) {
-  console.log(block);
   // Selectors
   const quoteDiv = document.querySelector('.quote');
   const quoteBody = block.firstElementChild;
