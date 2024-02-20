@@ -1,11 +1,7 @@
 export default function decorate(block) {
   // Selectors for buttons
-  const firstBtn = document.querySelectorAll(
-    '.columns .button-container:nth-of-type(2)'
-  );
-  const secondBtn = document.querySelectorAll(
-    '.columns .button-container:nth-of-type(3)'
-  );
+  const firstBtn = document.querySelectorAll('.columns .button-container:nth-of-type(2)');
+  const secondBtn = document.querySelectorAll('.columns .button-container:nth-of-type(3)');
 
   // Add class to each to button container
   firstBtn.forEach((btn) => {
