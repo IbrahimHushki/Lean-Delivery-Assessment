@@ -42,7 +42,7 @@
   }
 }
 
-.hero-body {
+.hero__body {
   padding: 149px 115px;
 
   p:last-child {
@@ -58,7 +58,7 @@
   }
 }
 
-#order-button {
+.order__button {
   color: white;
   border: 1px solid #f2f2f2;
 
@@ -83,7 +83,7 @@
     }
   }
 
-  .hero-body {
+  .hero__body {
     height: 100%;
     padding: 93px 50px 50px;
     text-align: center;

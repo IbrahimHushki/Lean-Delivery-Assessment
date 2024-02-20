@@ -1,6 +1,16 @@
-.columns-container > div {
-  margin: 50px;
+.columns-container {
+  padding: 0;
+
+  .columns-wrapper {
+    max-width: 100%;
+    padding: 0;
+
+    p,
+    h2 {
+      padding: 0 128px;
+    }
   }
+}
 
 .columns {
   div {
@@ -11,32 +21,32 @@
     div {
       order: 1;
     }
-  }
 
-  .button-container {
-    width: 118px;
-    margin-left: 128px;
-    padding: 10px 20px;
-    border: 1px solid var(--primary);
-  }
+    .button-container {
+      width: 118px;
+      margin-left: 128px;
+      padding: 10px 20px;
+      border: 1px solid var(--primary);
+    }
 
-  .button-container:has(a[title='Read More']) {
-    color: var(--primary);
-  }
+    .first__button {
+      color: var(--primary);
 
-  .button-container:has(a[title='Test Drive']) {
-    color: white;
-    background-color: var(--primary);
-  }
+      &:hover {
+        color: white;
+        background-color: var(--primary);
+      }
+    }
 
-  .button-container:has(a[title='Read More']):hover {
-    color: white;
-    background-color: var(--primary);
-  }
+    .second__button {
+      color: white;
+      background-color: var(--primary);
 
-  .button-container:has(a[title='Test Drive']):hover {
-    background: var(--primary-hover);
-    border-color: var(--primary-hover);
+      &:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+      }
+    }
   }
 
   .columns-img-col {
@@ -47,20 +57,6 @@
     display: block;
     width: 100%;
     height: auto;
-  }
-}
-
-.columns-container {
-  padding: 0;
-}
-
-.columns-wrapper {
-  max-width: 100%;
-  padding: 0;
-
-  p,
-  h2 {
-    padding: 0 128px;
   }
 }
 
@@ -78,13 +74,8 @@
 
 @media (width <= 600px) {
   .columns-wrapper {
-    p {
-      font-size: 14px;
-      margin: 0 50px;
-      padding: 14px;
-    }
-
-    h2 {
+    h2:first-of-type {
+      padding: 0 14px;
       margin: 50px 50px 0;
       margin-top: 50px;
       margin-left: 50px;
@@ -92,15 +83,25 @@
       padding: 14px;
       font-size: 20px;
     }
+
+    p:first-of-type {
+      font-size: 14px;
+      margin: 0 50px;
+      padding: 14px;
+    }
   }
 
-  .columns .button-container {
-    width: 274px;
-    margin: 14px 64px;
-    padding: 10px 20px;
-  }
+  .columns {
+    div {
+      .button-container {
+        width: 274px;
+        margin: 14px 64px;
+        padding: 10px 20px;
+      }
 
-  .button-container:has(a[title='Test Drive']) {
-    margin-bottom: 50px;
+      .second__button {
+        margin-bottom: 50px;
+      }
+    }
   }
 }

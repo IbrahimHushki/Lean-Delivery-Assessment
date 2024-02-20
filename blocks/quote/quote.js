@@ -10,17 +10,15 @@ export default function decorate(block) {
   const newQuoteAttr = document.createElement('cite');
 
   // Add class names
-  newQuoteBody.classList.add('quote-body');
-  newQuoteAttr.classList.add('attribution', 'quote__attribution');
+  newQuoteBody.classList.add('quote__body');
+  newQuoteAttr.classList.add('quote__attribution');
 
   // Replace default div element with blockQuote
   quoteDiv.replaceWith(blockQuote);
   blockQuote.appendChild(newQuoteBody);
   blockQuote.appendChild(newQuoteAttr);
 
-  // Add quotation marks before and after the quote
-  newQuoteBody.textContent = `"${quoteBody.textContent.trim()}"`;
-
-  // Add "- " before attribution
-  newQuoteAttr.textContent = `- ${attribution.textContent}`;
+  // Assign new values
+  newQuoteBody.textContent = quoteBody.textContent.trim();
+  newQuoteAttr.textContent = attribution.textContent;
 }
