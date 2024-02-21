@@ -18,11 +18,8 @@
 
       input {
         order: 0;
+        padding: 5px 10px;
       }
-    }
-
-    input {
-      padding: 5px 10px;
     }
   }
 }
