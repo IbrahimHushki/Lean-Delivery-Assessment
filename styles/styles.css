@@ -144,7 +144,6 @@ a:any-link {
 
 a:hover {
   text-decoration: none;
-  cursor: pointer;
 }
 
 main img {
@@ -164,8 +163,22 @@ main img {
   width: 100%;
 }
 
-.button-container:hover {
-  cursor: pointer;
+/* sections
+main .section {
+  padding: 64px 16px;
+} */
+
+/* @media (width >= 600px) {
+  main .section {
+    padding: 64px 32px;
+  }
+} */
+
+@media (width >= 900px) {
+  .section > div {
+    max-width: 1200px;
+    margin: auto;
+  }
 }
 
 /* section metadata */
