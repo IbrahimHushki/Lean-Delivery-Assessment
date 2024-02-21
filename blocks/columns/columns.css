@@ -29,7 +29,7 @@
       border: 1px solid var(--primary);
     }
 
-    .first__button {
+    .column__first-button {
       color: var(--primary);
 
       &:hover {
@@ -38,7 +38,7 @@
       }
     }
 
-    .second__button {
+    .column__second-button {
       color: white;
       background-color: var(--primary);
 
@@ -98,7 +98,7 @@
         padding: 10px 20px;
       }
 
-      .second__button {
+      .column__second-button {
         margin-bottom: 50px;
       }
     }
