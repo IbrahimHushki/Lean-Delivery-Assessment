@@ -1,68 +1,63 @@
-.columns > div {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--background-color);
-}
-
-.columns-container > div {
-  margin: 0%;
-}
-
-.columns img {
-  width: 100%;
-  height: auto;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-body > main > div.section.highlight.columns-container {
+.columns-container {
   padding: 0;
+
+  .columns-wrapper {
+    max-width: 100%;
+    padding: 0;
+
+    p,
+    h2 {
+      padding: 0 128px;
+    }
+  }
 }
 
-body > main > div.section.highlight.columns-container > div {
-  max-width: 100%;
-  padding: 0;
-}
+.columns {
+  div {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
 
-.columns-wrapper p,
-.columns-wrapper h2 {
-  padding: 0 128px;
-}
+    div {
+      order: 1;
+    }
 
-.columns .button-container {
-  width: 118px;
-  margin-left: 128px;
-  padding: 10px 20px;
-  border: 1px solid var(--primary);
-}
+    .button-container {
+      width: 118px;
+      margin-left: 128px;
+      padding: 10px 20px;
+      border: 1px solid var(--primary);
+    }
 
-.columns .button-container:has(a[title='Read More']) {
-  color: var(--primary);
-}
+    .first__button {
+      color: var(--primary);
 
-.columns .button-container:has(a[title='Test Drive']) {
-  color: white;
-  background-color: var(--primary);
-}
+      &:hover {
+        color: white;
+        background-color: var(--primary);
+      }
+    }
 
-.columns .button-container:has(a[title='Read More']):hover {
-  color: white;
-  background-color: var(--primary);
-}
+    .second__button {
+      color: white;
+      background-color: var(--primary);
 
-.columns .button-container:has(a[title='Test Drive']):hover {
-  background: var(--primary-hover);
-  border-color: var(--primary-hover);
-}
+      &:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+      }
+    }
+  }
 
-.columns > div > .columns-img-col {
-  order: 0;
-}
+  .columns-img-col {
+    order: 0;
+  }
 
-.columns > div > .columns-img-col img {
-  display: block;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media (width >= 900px) {
@@ -78,28 +73,34 @@ body > main > div.section.highlight.columns-container > div {
 }
 
 @media (width <= 600px) {
-  .columns-wrapper p {
-    font-size: 14px;
-    margin: 0 50px;
-    padding: 14px;
+  .columns-wrapper {
+    h2:first-of-type {
+      padding: 0 14px;
+      margin: 50px 50px 0;
+      margin-top: 50px;
+      margin-left: 50px;
+      margin-right: 50px;
+      font-size: 20px;
+    }
+
+    p:first-of-type {
+      font-size: 14px;
+      margin: 0 50px;
+      padding: 14px;
+    }
   }
 
-  .columns-wrapper h2 {
-    margin: 50px 50px 0;
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 14px;
-    font-size: 20px;
-  }
+  .columns {
+    div {
+      .button-container {
+        width: 274px;
+        margin: 14px 64px;
+        padding: 10px 20px;
+      }
 
-  .columns > div > div > p.button-container:last-child {
-    margin-bottom: 50px;
-  }
-
-  .columns .button-container {
-    width: 274px;
-    margin: 14px 64px;
-    padding: 10px 20px;
+      .second__button {
+        margin-bottom: 50px;
+      }
+    }
   }
 }

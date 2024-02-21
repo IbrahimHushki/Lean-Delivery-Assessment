@@ -1,0 +1,20 @@
+.quote__body {
+  font-style: italic;
+
+  &::before{
+    content: '"';
+  }
+
+  &::after {
+    content: '"';
+  }
+}
+
+.quote__attribution {
+  font-style: normal;
+  font-weight: bold;
+
+  &::before {
+    content: '- ';
+  }
+}

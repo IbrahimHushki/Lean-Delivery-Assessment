@@ -1,0 +1,13 @@
+.to-do {
+  div {
+    display: flex;
+
+    .button-container {
+        order: 1;
+    }
+
+    input {
+        order: 0;
+    }
+  }
+}
