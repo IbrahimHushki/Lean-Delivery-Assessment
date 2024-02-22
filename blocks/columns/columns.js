@@ -5,10 +5,10 @@ export default function decorate(block) {
 
   // Add class to each to button container
   firstBtn.forEach((btn) => {
-    btn.classList.add('first__button');
+    btn.classList.add('column__first-button');
   });
   secondBtn.forEach((btn) => {
-    btn.classList.add('second__button');
+    btn.classList.add('column__second-button');
   });
 
   const cols = [...block.firstElementChild.children];

@@ -1,13 +1,25 @@
-.to-do {
-  div {
-    display: flex;
+.to-do-container {
+  margin: 20px 100px;
 
-    .button-container {
+  .to-do {
+    div {
+      display: flex;
+
+      .button-container {
         order: 1;
-    }
+        color: white;
+        background-color: var(--primary);
+        margin: 0 10px;
 
-    input {
+        &:hover {
+          background-color: var(--primary-hover);
+        }
+      }
+
+      input {
         order: 0;
+        padding: 5px 10px;
+      }
     }
   }
 }
