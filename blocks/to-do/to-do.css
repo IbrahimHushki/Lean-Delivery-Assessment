@@ -16,7 +16,7 @@
         }
       }
 
-      input {
+      #to-do__input {
         order: 0;
         padding: 5px 10px;
       }
