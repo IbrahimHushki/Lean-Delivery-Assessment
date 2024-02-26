@@ -1,5 +1,6 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
 import addListItem from './add-list-items.js';
+import getListItems from './list-items.js';
 
 // Selectors
 const addBtn = document.querySelector('.to-do .button-container');
@@ -61,4 +62,6 @@ export default function decorate(block) {
   input.addEventListener('keypress', (event) => {
     handleEnterKeyPress(event, addToDo);
   });
+
+  getListItems();
 }
