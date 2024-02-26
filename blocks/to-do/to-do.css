@@ -2,8 +2,23 @@
   margin: 20px 100px;
 
   .to-do {
-    div {
+    display: flex;
+    flex-direction: column;
+
+    > *:not(ol) {
       display: flex;
+    }
+
+    .to-do__title {
+      order: 1;
+    }
+
+    .to-do__label {
+      order: 2;
+    }
+
+    .to-do__input-and-btn {
+      order: 3;
 
       .button-container {
         order: 1;
@@ -20,6 +35,10 @@
         order: 0;
         padding: 5px 10px;
       }
+    }
+
+    .to-do__ordered-list {
+      order: 4;
     }
   }
 }

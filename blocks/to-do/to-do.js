@@ -2,28 +2,53 @@ import handleEnterKeyPress from '../../scripts/enter-key-press.js';
 import addListItem from './add-list-items.js';
 
 // Selectors
-const toDoInputAndBtn = document.querySelector('.to-do > div:last-of-type');
-const label = document.querySelector('.to-do > div:nth-of-type(2)');
 const addBtn = document.querySelector('.to-do .button-container');
+const blockChildDivs = document.querySelectorAll('.to-do > div');
 
-// Create element
+// Select divs based on content
+let titleDiv;
+let labelDiv;
+let toDoInputAndBtn;
+
+blockChildDivs.forEach((div) => {
+  if (div.textContent.includes('title')) {
+    titleDiv = div;
+  }
+  if (div.textContent.includes('label')) {
+    labelDiv = div;
+  }
+  if (div.textContent.includes('button')) {
+    toDoInputAndBtn = div;
+  }
+});
+
+// Create elements
 const input = document.createElement('input');
 const orderedList = document.createElement('ol');
 const labelElement = document.createElement('label');
 
 // Decorate block function
 export default function decorate(block) {
+  // Remove divs in the first column
+  blockChildDivs.forEach((div) => {
+    div.removeChild(div.firstElementChild);
+  });
+
   // Set attributes
+  titleDiv.classList.add('to-do__title');
+  labelElement.setAttribute('for', 'to-do__input');
+  labelElement.classList.add('to-do__label');
+  toDoInputAndBtn.classList.add('to-do__input-and-btn');
   input.setAttribute('placeholder', 'Type here...');
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'to-do__input');
-  labelElement.setAttribute('for', 'to-do__input');
+  orderedList.classList.add('to-do__ordered-list');
 
   // Change content
   toDoInputAndBtn.appendChild(input);
   block.appendChild(orderedList);
-  label.replaceWith(labelElement);
-  labelElement.textContent = label.textContent;
+  labelDiv.replaceWith(labelElement);
+  labelElement.textContent = labelDiv.textContent;
 
   // Specify addListItem function parameters
   const addToDo = (event) => {
