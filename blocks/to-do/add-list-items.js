@@ -1,7 +1,4 @@
 export default function addListItem(event, inputValue, list) {
-  // Prevent button from scrolling up
-  event.preventDefault();
-
   // Make sure input is not empty
   if (inputValue !== '') {
     // Create elements

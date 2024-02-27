@@ -1,5 +1,6 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
 import addListItem from './add-list-items.js';
+import getListItems from './list-items.js';
 
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
@@ -78,8 +79,22 @@ export default function decorate(block) {
   toDoInputAndBtn.appendChild(input);
   block.appendChild(orderedList);
 
+  // Call getListItems function to fetch data
+  getListItems().then((data) => {
+    // Loop through the data and add list items
+    data.forEach((item) => {
+      // Check if the "Status" is "true" before adding the item
+      if (item.Status === 'true') {
+        addListItem(null, item['to-do'], orderedList);
+      }
+    });
+  });
+
   // Specify addListItem function parameters
   const addToDo = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
     addListItem(event, input.value.trim(), orderedList);
     input.value = '';
   };
