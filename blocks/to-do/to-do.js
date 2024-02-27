@@ -1,10 +1,14 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
 import addListItem from './add-list-items.js';
-import getListItems from './list-items.js';
 
 // Selectors
-const addBtn = document.querySelector('.to-do .button-container');
+let addBtn = document.querySelector('.to-do .button-container');
 const blockChildDivs = document.querySelectorAll('.to-do > div');
+
+// Create elements
+const input = document.createElement('input');
+const orderedList = document.createElement('ol');
+const labelElement = document.createElement('label');
 
 // Select divs based on content
 let titleDiv;
@@ -23,10 +27,25 @@ blockChildDivs.forEach((div) => {
   }
 });
 
-// Create elements
-const input = document.createElement('input');
-const orderedList = document.createElement('ol');
-const labelElement = document.createElement('label');
+// If button doesn't exist in the content source
+if (!addBtn) {
+  // create elements
+  const inputAndSubmitBtnDiv = document.createElement('div');
+  const submitBtnLink = document.createElement('a');
+  addBtn = document.createElement('div');
+
+  // Add classes and attributes
+  addBtn.classList.add('button-container');
+  submitBtnLink.classList.add('button');
+  submitBtnLink.setAttribute('title', 'Add');
+
+  // Change content
+  submitBtnLink.textContent = 'Submit';
+  addBtn.appendChild(submitBtnLink);
+  inputAndSubmitBtnDiv.appendChild(addBtn);
+  toDoInputAndBtn = inputAndSubmitBtnDiv;
+  document.querySelector('.to-do').appendChild(inputAndSubmitBtnDiv);
+}
 
 // Decorate block function
 export default function decorate(block) {
@@ -48,8 +67,12 @@ export default function decorate(block) {
   // Change content
   toDoInputAndBtn.appendChild(input);
   block.appendChild(orderedList);
-  labelDiv.replaceWith(labelElement);
-  labelElement.textContent = labelDiv.textContent;
+
+  // Handle error if label doesn't exist
+  if (labelDiv) {
+    labelDiv.replaceWith(labelElement);
+    labelElement.textContent = labelDiv.textContent;
+  }
 
   // Specify addListItem function parameters
   const addToDo = (event) => {
@@ -62,6 +85,4 @@ export default function decorate(block) {
   input.addEventListener('keypress', (event) => {
     handleEnterKeyPress(event, addToDo);
   });
-
-  getListItems();
 }
