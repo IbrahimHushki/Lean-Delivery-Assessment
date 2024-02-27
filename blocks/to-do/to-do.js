@@ -55,7 +55,6 @@ export default function decorate(block) {
   });
 
   // Set attributes
-  titleDiv.classList.add('to-do__title');
   labelElement.setAttribute('for', 'to-do__input');
   labelElement.classList.add('to-do__label');
   toDoInputAndBtn.classList.add('to-do__input-and-btn');
@@ -64,15 +63,20 @@ export default function decorate(block) {
   input.setAttribute('id', 'to-do__input');
   orderedList.classList.add('to-do__ordered-list');
 
-  // Change content
-  toDoInputAndBtn.appendChild(input);
-  block.appendChild(orderedList);
+  // Handle if title doesn't exist in the content source
+  if (titleDiv) {
+    titleDiv.classList.add('to-do__title');
+  }
 
   // Handle error if label doesn't exist
   if (labelDiv) {
     labelDiv.replaceWith(labelElement);
     labelElement.textContent = labelDiv.textContent;
   }
+
+  // Change content
+  toDoInputAndBtn.appendChild(input);
+  block.appendChild(orderedList);
 
   // Specify addListItem function parameters
   const addToDo = (event) => {
