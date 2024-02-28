@@ -1,9 +1,15 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
 import addListItem from './add-list-items.js';
+import getListItems from './list-items.js';
 
 // Selectors
-const addBtn = document.querySelector('.to-do .button-container');
+let addBtn = document.querySelector('.to-do .button-container');
 const blockChildDivs = document.querySelectorAll('.to-do > div');
+
+// Create elements
+const input = document.createElement('input');
+const orderedList = document.createElement('ol');
+const labelElement = document.createElement('label');
 
 // Select divs based on content
 let titleDiv;
@@ -22,10 +28,25 @@ blockChildDivs.forEach((div) => {
   }
 });
 
-// Create elements
-const input = document.createElement('input');
-const orderedList = document.createElement('ol');
-const labelElement = document.createElement('label');
+// If button doesn't exist in the content source
+if (!addBtn) {
+  // create elements
+  const inputAndSubmitBtnDiv = document.createElement('div');
+  const submitBtnLink = document.createElement('a');
+  addBtn = document.createElement('div');
+
+  // Add classes and attributes
+  addBtn.classList.add('button-container');
+  submitBtnLink.classList.add('button');
+  submitBtnLink.setAttribute('title', 'Add');
+
+  // Change content
+  submitBtnLink.textContent = 'Submit';
+  addBtn.appendChild(submitBtnLink);
+  inputAndSubmitBtnDiv.appendChild(addBtn);
+  toDoInputAndBtn = inputAndSubmitBtnDiv;
+  document.querySelector('.to-do').appendChild(inputAndSubmitBtnDiv);
+}
 
 // Decorate block function
 export default function decorate(block) {
@@ -35,7 +56,6 @@ export default function decorate(block) {
   });
 
   // Set attributes
-  titleDiv.classList.add('to-do__title');
   labelElement.setAttribute('for', 'to-do__input');
   labelElement.classList.add('to-do__label');
   toDoInputAndBtn.classList.add('to-do__input-and-btn');
@@ -44,14 +64,37 @@ export default function decorate(block) {
   input.setAttribute('id', 'to-do__input');
   orderedList.classList.add('to-do__ordered-list');
 
+  // Handle if title doesn't exist in the content source
+  if (titleDiv) {
+    titleDiv.classList.add('to-do__title');
+  }
+
+  // Handle error if label doesn't exist
+  if (labelDiv) {
+    labelDiv.replaceWith(labelElement);
+    labelElement.textContent = labelDiv.textContent;
+  }
+
   // Change content
   toDoInputAndBtn.appendChild(input);
   block.appendChild(orderedList);
-  labelDiv.replaceWith(labelElement);
-  labelElement.textContent = labelDiv.textContent;
+
+  // Call getListItems function to fetch data
+  getListItems().then((data) => {
+    // Loop through the data and add list items
+    data.forEach((item) => {
+      // Check if the "Status" is "true" before adding the item
+      if (item.Status === 'true') {
+        addListItem(null, item['to-do'], orderedList);
+      }
+    });
+  });
 
   // Specify addListItem function parameters
   const addToDo = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
     addListItem(event, input.value.trim(), orderedList);
     input.value = '';
   };

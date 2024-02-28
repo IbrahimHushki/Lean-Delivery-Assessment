@@ -39,6 +39,15 @@
 
     .to-do__ordered-list {
       order: 4;
+
+      .to-do__list-item {
+        display: flex;
+        margin: 5px 0;
+
+        li {
+          margin-right: 10px;
+        }
+      }
     }
   }
 }
