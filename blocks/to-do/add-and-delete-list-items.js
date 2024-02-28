@@ -20,10 +20,13 @@ export default function addListItem(inputValue, list) {
   list.appendChild(listItem);
 
   // Delete item function
-  const deleteListItem = () => {
-    listItem.remove();
+  const deleteListItem = (event) => {
+    if (event.target.matches('button')) {
+      const parentListItem = event.target.parentElement;
+      parentListItem.remove();
+    }
   };
 
-  // Add button event listener
-  listItemBtn.addEventListener('click', deleteListItem);
+  // Add event listener
+  list.addEventListener('click', deleteListItem);
 }

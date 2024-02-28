@@ -1,5 +1,5 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
-import addListItem from './add-list-items.js';
+import addListItem from './add-and-delete-list-items.js';
 import getListItems from './get-list-items.js';
 
 // Selectors
