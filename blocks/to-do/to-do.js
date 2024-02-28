@@ -1,6 +1,6 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
 import addListItem from './add-list-items.js';
-import getListItems from './list-items.js';
+import getListItems from './get-list-items.js';
 
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
@@ -49,7 +49,7 @@ if (!addBtn) {
 }
 
 // Decorate block function
-export default function decorate(block) {
+export default async function decorate(block) {
   // Remove divs in the first column
   blockChildDivs.forEach((div) => {
     div.removeChild(div.firstElementChild);
@@ -79,19 +79,23 @@ export default function decorate(block) {
   toDoInputAndBtn.appendChild(input);
   block.appendChild(orderedList);
 
+  // Fetch data asynchronously
+  const data = await getListItems('to-do.js');
+
   // Call getListItems function to fetch data
-  getListItems().then((data) => {
-    // Loop through the data and add list items
-    data.forEach((item) => {
-      // Check if the "Status" is "true" before adding the item
-      if (item.Status === 'true') {
-        addListItem(item['to-do'], orderedList);
-      }
-    });
+  // Loop through the data and add list items
+  data.forEach((item) => {
+    // Check if the todo "completed" value is true which comes back as a string
+    if (item.completed === 'true') {
+      addListItem(item['to-do'], orderedList);
+    } else {
+      addListItem(item['to-do'], orderedList);
+    }
   });
 
   // Specify addListItem function parameters
   const addToDo = (event) => {
+    // To prevent the button from scrolling up when clicked
     if (event) {
       event.preventDefault();
     }
