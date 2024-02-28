@@ -41,11 +41,10 @@
       order: 4;
 
       .to-do__list-item {
-        display: flex;
         margin: 5px 0;
 
-        li {
-          margin-right: 10px;
+        button {
+          margin-left: 10px;
         }
       }
     }

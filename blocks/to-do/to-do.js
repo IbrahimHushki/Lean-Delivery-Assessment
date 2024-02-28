@@ -85,7 +85,7 @@ export default function decorate(block) {
     data.forEach((item) => {
       // Check if the "Status" is "true" before adding the item
       if (item.Status === 'true') {
-        addListItem(null, item['to-do'], orderedList);
+        addListItem(item['to-do'], orderedList);
       }
     });
   });
@@ -95,7 +95,7 @@ export default function decorate(block) {
     if (event) {
       event.preventDefault();
     }
-    addListItem(event, input.value.trim(), orderedList);
+    addListItem(input.value.trim(), orderedList);
     input.value = '';
   };
 
