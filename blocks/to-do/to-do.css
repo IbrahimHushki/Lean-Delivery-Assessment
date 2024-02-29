@@ -47,6 +47,10 @@
           margin-left: 10px;
         }
       }
+
+      [data-completed="true"] {
+        text-decoration: line-through;
+      }
     }
   }
 }

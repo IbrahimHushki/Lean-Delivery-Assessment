@@ -83,15 +83,11 @@ export default async function decorate(block) {
   // Fetch data asynchronously
   const data = await getListItems('to-do.js');
 
-  // Call getListItems function to fetch data
   // Loop through the data and add list items
   data.forEach((item) => {
-    // Check if the todo "completed" value is true which comes back as a string
-    if (item.completed === 'true') {
-      addListItem(item['to-do'], orderedList);
-    } else {
-      addListItem(item['to-do'], orderedList);
-    }
+    // Check for the "completed" value to set it as "data-completed" attribute
+    const completed = item.completed === 'true' || 'false';
+    addListItem(item['to-do'], orderedList, completed);
   });
 
   // Specify addListItem function parameters
