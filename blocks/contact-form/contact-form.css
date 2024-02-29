@@ -1,0 +1,29 @@
+.contact-form-container {
+  margin: 20px 100px;
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+
+    .contact-form__title {
+      order: 0;
+    }
+
+    .contact-form__field {
+      margin-bottom: 10px;
+
+      input {
+        padding: 7px 5px;
+      }
+    }
+
+    .contact-form__button {
+      width: 20%;
+      padding: 10px 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
