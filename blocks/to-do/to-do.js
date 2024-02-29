@@ -63,6 +63,7 @@ export default async function decorate(block) {
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'to-do__input');
   orderedList.classList.add('to-do__ordered-list');
+  orderedList.setAttribute('data-has-listener', 'false');
 
   // Handle if title doesn't exist in the content source
   if (titleDiv) {

@@ -27,6 +27,9 @@ export default function addListItem(inputValue, list) {
     }
   };
 
-  // Add event listener
-  list.addEventListener('click', deleteListItem);
+  // Add only one event listener
+  if (list.getAttribute('data-has-listener') === 'false') {
+    list.addEventListener('click', deleteListItem);
+    list.setAttribute('data-has-listener', 'true');
+  }
 }
