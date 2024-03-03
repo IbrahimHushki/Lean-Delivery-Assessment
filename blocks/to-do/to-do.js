@@ -1,6 +1,6 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
-import addListItem from './add-list-items.js';
-import getListItems from './list-items.js';
+import addListItem from './add-and-delete-list-items.js';
+import getListItems from './get-list-items.js';
 
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
@@ -49,7 +49,7 @@ if (!addBtn) {
 }
 
 // Decorate block function
-export default function decorate(block) {
+export default async function decorate(block) {
   // Remove divs in the first column
   blockChildDivs.forEach((div) => {
     div.removeChild(div.firstElementChild);
@@ -63,6 +63,7 @@ export default function decorate(block) {
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'to-do__input');
   orderedList.classList.add('to-do__ordered-list');
+  orderedList.setAttribute('data-has-listener', 'false');
 
   // Handle if title doesn't exist in the content source
   if (titleDiv) {
@@ -79,23 +80,23 @@ export default function decorate(block) {
   toDoInputAndBtn.appendChild(input);
   block.appendChild(orderedList);
 
-  // Call getListItems function to fetch data
-  getListItems().then((data) => {
-    // Loop through the data and add list items
-    data.forEach((item) => {
-      // Check if the "Status" is "true" before adding the item
-      if (item.Status === 'true') {
-        addListItem(null, item['to-do'], orderedList);
-      }
-    });
+  // Fetch data asynchronously
+  const data = await getListItems('to-do.js');
+
+  // Loop through the data and add list items
+  data.forEach((item) => {
+    // Check for the "completed" value to set it as "data-completed" attribute
+    const completed = item.completed === 'true' || 'false';
+    addListItem(item['to-do'], orderedList, completed);
   });
 
   // Specify addListItem function parameters
   const addToDo = (event) => {
+    // To prevent the button from scrolling up when clicked
     if (event) {
       event.preventDefault();
     }
-    addListItem(event, input.value.trim(), orderedList);
+    addListItem(input.value.trim(), orderedList);
     input.value = '';
   };
 
