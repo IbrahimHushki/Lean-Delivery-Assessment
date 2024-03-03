@@ -17,12 +17,15 @@
       }
     }
 
-    .contact-form__button {
+    .button-container {
       width: 20%;
       padding: 10px 20px;
+      background-color: var(--primary);
+      color: white;
 
       &:hover {
         cursor: pointer;
+        background-color: var(--primary-hover);
       }
     }
   }
