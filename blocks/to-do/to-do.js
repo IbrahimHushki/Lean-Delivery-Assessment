@@ -11,6 +11,13 @@ const blockChildDivs = document.querySelectorAll('.to-do > div');
 const input = document.createElement('input');
 const orderedList = document.createElement('ol');
 const labelElement = document.createElement('label');
+// Save items button
+const saveItemsDiv = document.createElement('div');
+const saveItemsLink = document.createElement('a');
+saveItemsDiv.classList.add('button-container');
+saveItemsDiv.classList.add('to-do__save-button');
+saveItemsLink.textContent = 'Save';
+saveItemsDiv.appendChild(saveItemsLink);
 
 // Select divs based on content
 let titleDiv;
@@ -78,6 +85,7 @@ export default async function decorate(block) {
 
   // Change content
   toDoInputAndBtn.appendChild(input);
+  toDoInputAndBtn.appendChild(saveItemsDiv);
   block.appendChild(orderedList);
 
   // Fetch data asynchronously
