@@ -1,6 +1,7 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
-import addListItem from './add-and-delete-list-items.js';
+import addListItem from './add-list-items.js';
 import getListItems from './get-list-items.js';
+import deleteListItem from './delete-item.js';
 
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
@@ -104,4 +105,9 @@ export default async function decorate(block) {
   input.addEventListener('keypress', (event) => {
     handleEnterKeyPress(event, addToDo);
   });
+  // Add only one event listener
+  if (!orderedList.getAttribute('data-has-listener')) {
+    orderedList.addEventListener('click', deleteListItem);
+    orderedList.setAttribute('data-has-listener', 'true');
+  }
 }

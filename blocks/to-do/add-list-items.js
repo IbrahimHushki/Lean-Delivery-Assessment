@@ -24,18 +24,4 @@ export default function addListItem(inputValue, list, completed) {
   // Append children
   listItem.appendChild(listItemBtn);
   list.appendChild(listItem);
-
-  // Delete item function
-  const deleteListItem = (event) => {
-    if (event.target.matches('button')) {
-      const parentListItem = event.target.parentElement;
-      parentListItem.remove();
-    }
-  };
-
-  // Add only one event listener
-  if (!list.getAttribute('data-has-listener')) {
-    list.addEventListener('click', deleteListItem);
-    list.setAttribute('data-has-listener', 'true');
-  }
 }
