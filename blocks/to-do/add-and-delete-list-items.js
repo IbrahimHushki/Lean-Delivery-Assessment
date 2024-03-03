@@ -34,7 +34,7 @@ export default function addListItem(inputValue, list, completed) {
   };
 
   // Add only one event listener
-  if (list.getAttribute('data-has-listener') === 'false') {
+  if (!list.getAttribute('data-has-listener')) {
     list.addEventListener('click', deleteListItem);
     list.setAttribute('data-has-listener', 'true');
   }
