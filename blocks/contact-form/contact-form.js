@@ -1,20 +1,27 @@
 import submitContactInfo from './submit-contact-info.js';
 
-// Selectors
+// Selector for field divs
 const blockChildDivs = document.querySelectorAll('.contact-form > div');
 
 export default function decorate(block) {
-  // Create submit button
+  // Create elements
+  const form = document.createElement('form');
   const submitBtnDiv = document.createElement('div');
   const submitBtnLink = document.createElement('a');
-  submitBtnLink.textContent = 'Submit';
+
+  // Add classes to the submit button
   submitBtnDiv.classList.add('button-container');
   submitBtnLink.classList.add('contact-form__button');
-  // Add submit button
+
+  // Change content
+  submitBtnLink.textContent = 'Submit';
   submitBtnDiv.appendChild(submitBtnLink);
+  block.appendChild(form);
   block.appendChild(submitBtnDiv);
 
-  // Create input elements for each field
+  const formElements = form.elements;
+
+  // Modify each field and add an "input" element
   blockChildDivs.forEach((div) => {
     const fieldName = div.textContent;
 
@@ -25,45 +32,25 @@ export default function decorate(block) {
       div.classList.add('contact-form__field');
     }
 
-    // Check for field name and add a fitting input "type" attribute and assign variables
-    let firstName;
-    let lastName;
-    let email;
-    let birthDate;
-    let termsOfService;
+    // Selectors
+    const inputTypeColumn = div.querySelector('div:last-of-type');
+
     // Add inputs with fitting "type" attributes to every field except for the title
     if (!fieldName.includes('title')) {
       // Create input element
       const input = document.createElement('input');
 
-      if (fieldName.includes('name')) {
-        input.setAttribute('type', 'text');
-      }
-      if (fieldName.includes('first name')) {
-        firstName = input.textContent;
-      }
-      if (fieldName.includes('last name')) {
-        lastName = input.textContent;
-      }
-      if (fieldName.includes('email')) {
-        input.setAttribute('type', 'email');
-        email = input.textContent;
-      }
-      if (fieldName.includes('date')) {
-        input.setAttribute('type', 'date');
-        birthDate = input.textContent;
-      }
-      if (fieldName.includes('terms of service')) {
-        input.setAttribute('type', 'checkbox');
-        input.setAttribute('id', 'contact-form__tos-input');
-      }
+      // Set the input type
+      input.setAttribute('type', inputTypeColumn.textContent);
 
-      // Add the input to each field
+      // Add the input to each field then append it to the form element
       div.appendChild(input);
+      form.appendChild(div);
     }
 
-    // Remove the first column element
+    // Remove the first and last column elements
     div.removeChild(div.firstElementChild);
+    div.removeChild(inputTypeColumn);
 
     // Specify submitContactInfo arguments
     const submitInfo = (event) => {
@@ -71,7 +58,7 @@ export default function decorate(block) {
       if (event) {
         event.preventDefault();
       }
-      submitContactInfo(firstName, lastName, email, birthDate, termsOfService);
+      submitContactInfo(formElements);
     };
 
     // Add event listener

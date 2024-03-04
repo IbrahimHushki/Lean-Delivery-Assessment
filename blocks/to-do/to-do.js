@@ -94,7 +94,7 @@ export default async function decorate(block) {
   // Loop through the data and add list items
   data.forEach((item) => {
     // Check for the "completed" value to set it as "data-completed" attribute
-    const completed = item.completed === 'true' || 'false';
+    const completed = item.completed === 'true';
     addListItem(item['to-do'], orderedList, completed);
   });
 
