@@ -10,18 +10,28 @@
     }
 
     .contact-form__field {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 10px;
+      width: 20%;
+
+      label {
+        order: 0;
+      }
 
       input {
+        order: 1;
         padding: 7px 5px;
       }
     }
 
-    .button-container {
+    .contact-form__button {
       width: 20%;
       padding: 10px 20px;
       background-color: var(--primary);
       color: white;
+      border: none;
+      font-family: var(--body-font-family);
 
       &:hover {
         cursor: pointer;
