@@ -7,7 +7,6 @@ export default function decorate(block) {
   // Create elements
   const form = document.createElement('form');
   const submitBtn = document.createElement('button');
-  // Array for field names
 
   // Add classes to the submit button
   submitBtn.classList.add('button-container');
@@ -50,6 +49,13 @@ export default function decorate(block) {
       // Set the input type and name attributes
       input.setAttribute('type', inputTypeColumn.textContent);
       input.setAttribute('name', fieldNameColumn.textContent);
+
+      // Set the value of "checkbox" type inputs
+      if (inputTypeColumn.textContent === 'checkbox') {
+        input.addEventListener('change', function changeValue() {
+          input.value = this.checked ? 'true' : 'false';
+        });
+      }
 
       // Add the input to each field then append it to the form element
       div.appendChild(input);
