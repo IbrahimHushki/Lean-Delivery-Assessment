@@ -1,6 +1,7 @@
 import handleEnterKeyPress from '../../scripts/enter-key-press.js';
-import addListItem from './add-and-delete-list-items.js';
+import addListItem from './add-list-items.js';
 import getListItems from './get-list-items.js';
+import deleteListItem from './delete-item.js';
 
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
@@ -10,6 +11,13 @@ const blockChildDivs = document.querySelectorAll('.to-do > div');
 const input = document.createElement('input');
 const orderedList = document.createElement('ol');
 const labelElement = document.createElement('label');
+// Save items button
+const saveItemsDiv = document.createElement('div');
+const saveItemsLink = document.createElement('a');
+saveItemsDiv.classList.add('button-container');
+saveItemsDiv.classList.add('to-do__save-button');
+saveItemsLink.textContent = 'Save';
+saveItemsDiv.appendChild(saveItemsLink);
 
 // Select divs based on content
 let titleDiv;
@@ -63,7 +71,6 @@ export default async function decorate(block) {
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'to-do__input');
   orderedList.classList.add('to-do__ordered-list');
-  orderedList.setAttribute('data-has-listener', 'false');
 
   // Handle if title doesn't exist in the content source
   if (titleDiv) {
@@ -78,6 +85,7 @@ export default async function decorate(block) {
 
   // Change content
   toDoInputAndBtn.appendChild(input);
+  toDoInputAndBtn.appendChild(saveItemsDiv);
   block.appendChild(orderedList);
 
   // Fetch data asynchronously
@@ -86,7 +94,7 @@ export default async function decorate(block) {
   // Loop through the data and add list items
   data.forEach((item) => {
     // Check for the "completed" value to set it as "data-completed" attribute
-    const completed = item.completed === 'true' || 'false';
+    const completed = item.completed === 'true';
     addListItem(item['to-do'], orderedList, completed);
   });
 
@@ -105,4 +113,9 @@ export default async function decorate(block) {
   input.addEventListener('keypress', (event) => {
     handleEnterKeyPress(event, addToDo);
   });
+  // Add only one event listener
+  if (!orderedList.getAttribute('data-has-listener')) {
+    orderedList.addEventListener('click', deleteListItem);
+    orderedList.setAttribute('data-has-listener', 'true');
+  }
 }
