@@ -49,6 +49,7 @@ export default function decorate(block) {
       // Set the input type and name attributes
       input.setAttribute('type', inputTypeColumn.textContent);
       input.setAttribute('name', fieldNameColumn.textContent);
+      input.setAttribute('required', true);
 
       // Set the value of "checkbox" type inputs
       if (inputTypeColumn.textContent === 'checkbox') {
@@ -69,12 +70,24 @@ export default function decorate(block) {
     }
   });
   // Specify submitContactInfo arguments
-  const submitInfo = (event) => {
+  const submitInfo = async (event) => {
     // To prevent the button from scrolling up when clicked
     if (event) {
       event.preventDefault();
     }
-    submitContactInfo(formInputs);
+
+    // Make sure no inputs are empty
+    const emptyInputs = [...formInputs].filter(
+      (input) => input.required && !input.value.trim(),
+    );
+
+    if (emptyInputs.length > 0) {
+      emptyInputs.forEach((input) => input.classList.add('required-empty-input'));
+      return;
+    }
+
+    await submitContactInfo(formInputs);
+    form.reset();
   };
 
   // Add event listener

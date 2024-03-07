@@ -23,6 +23,10 @@
         order: 1;
         padding: 7px 5px;
       }
+
+      .required-empty-input {
+        border-color: red;
+      }
     }
 
     .contact-form__button {

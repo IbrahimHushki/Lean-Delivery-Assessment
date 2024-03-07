@@ -3,6 +3,7 @@ import addListItem from './add-list-items.js';
 import getListItems from './get-list-items.js';
 import deleteListItem from './delete-item.js';
 import changeItemStaus from './change-item-status.js';
+import saveListItems from './save-list-items.js';
 
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
@@ -13,12 +14,10 @@ const input = document.createElement('input');
 const orderedList = document.createElement('ol');
 const labelElement = document.createElement('label');
 // Save items button
-const saveItemsDiv = document.createElement('div');
-const saveItemsLink = document.createElement('a');
-saveItemsDiv.classList.add('button-container');
-saveItemsDiv.classList.add('to-do__save-button');
-saveItemsLink.textContent = 'Save';
-saveItemsDiv.appendChild(saveItemsLink);
+const saveItemsBtn = document.createElement('button');
+saveItemsBtn.classList.add('button-container');
+saveItemsBtn.classList.add('to-do__save-button');
+saveItemsBtn.textContent = 'Save';
 
 // Select divs based on content
 let titleDiv;
@@ -86,7 +85,7 @@ export default async function decorate(block) {
 
   // Change content
   toDoInputAndBtn.appendChild(input);
-  toDoInputAndBtn.appendChild(saveItemsDiv);
+  toDoInputAndBtn.appendChild(saveItemsBtn);
   block.appendChild(orderedList);
 
   // Fetch data asynchronously
@@ -114,6 +113,9 @@ export default async function decorate(block) {
   input.addEventListener('keypress', (event) => {
     handleEnterKeyPress(event, addToDo);
   });
+
+  saveItemsBtn.addEventListener('click', saveListItems);
+
   // Add event listeners
   if (!orderedList.getAttribute('data-has-listener')) {
     orderedList.addEventListener('click', deleteListItem);

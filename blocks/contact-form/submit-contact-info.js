@@ -5,14 +5,12 @@ export default async function submitContactInfo(inputs) {
     formData[key] = value.value;
   });
 
-  const formDataObject = { data: formData };
-
   const response = await fetch('/contact-form', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(formDataObject),
+    body: JSON.stringify({ data: formData }),
   });
 
   if (!response.ok) {
