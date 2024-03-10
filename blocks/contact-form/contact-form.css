@@ -42,5 +42,13 @@
         background-color: var(--primary-hover);
       }
     }
+
+    .contact-form__success-message {
+      color: green;
+    }
+
+    .contact-form__failed-message {
+      color:red;
+    }
   }
 }

@@ -7,13 +7,19 @@ export default function decorate(block) {
   // Create elements
   const form = document.createElement('form');
   const submitBtn = document.createElement('button');
+  const successMessage = document.createElement('h4');
+  const failMessage = document.createElement('h4');
 
   // Add classes to the submit button
   submitBtn.classList.add('button-container');
   submitBtn.classList.add('contact-form__button');
+  successMessage.classList.add('contact-form__success-message');
+  failMessage.classList.add('contact-form__failed-message');
 
   // Change content
   submitBtn.textContent = 'Submit';
+  successMessage.textContent = 'Info Submitted';
+  failMessage.textContent = 'Failed to Submit';
   block.appendChild(form);
   block.appendChild(submitBtn);
 
@@ -83,10 +89,22 @@ export default function decorate(block) {
 
     if (emptyInputs.length > 0) {
       emptyInputs.forEach((input) => input.classList.add('required-empty-input'));
+
+      // Set message if info fails to send
+      block.appendChild(failMessage);
+      setTimeout(() => {
+        block.removeChild(failMessage);
+      }, 3000);
       return;
     }
 
     await submitContactInfo(formInputs);
+
+    // Set success message
+    block.appendChild(successMessage);
+    setTimeout(() => {
+      block.removeChild(successMessage);
+    }, 3000);
     form.reset();
   };
 
