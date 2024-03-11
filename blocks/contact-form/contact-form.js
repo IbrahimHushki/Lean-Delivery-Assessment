@@ -114,7 +114,7 @@ export default function decorate(block) {
   form.addEventListener('input', (event) => {
     if (event.target.tagName === 'INPUT') {
       const input = event.target;
-      if (input.value.trim()) {
+      if (input.checkValidity()) {
         input.classList.remove('required-invalid-input');
       }
     }
