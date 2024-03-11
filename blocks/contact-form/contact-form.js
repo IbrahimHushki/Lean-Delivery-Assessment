@@ -75,6 +75,7 @@ export default function decorate(block) {
       div.removeChild(inputTypeColumn);
     }
   });
+
   // Specify submitContactInfo arguments
   const submitInfo = async (event) => {
     // To prevent the button from scrolling up when clicked
@@ -82,12 +83,13 @@ export default function decorate(block) {
       event.preventDefault();
     }
 
-    // Make sure no inputs are empty
+    // Select empty inputs
     const emptyInputs = [...formInputs].filter(
-      (input) => input.required && !input.value.trim(),
+      (input) => !input.checkValidity(),
     );
 
-    if (emptyInputs.length > 0) {
+    if (!form.checkValidity()) {
+      // Set className for empty inputs to highlight in red
       emptyInputs.forEach((input) => input.classList.add('required-empty-input'));
 
       // Set message if info fails to send
@@ -107,6 +109,16 @@ export default function decorate(block) {
     }, 3000);
     form.reset();
   };
+
+  // Remove red border from inputs once they have values by removing the className
+  form.addEventListener('input', (event) => {
+    if (event.target.tagName === 'INPUT') {
+      const input = event.target;
+      if (input.value.trim()) {
+        input.classList.remove('required-empty-input');
+      }
+    }
+  });
 
   // Add event listener
   if (!submitBtn.getAttribute('has-event-listener')) {
