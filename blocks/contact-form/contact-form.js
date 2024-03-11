@@ -83,14 +83,14 @@ export default function decorate(block) {
       event.preventDefault();
     }
 
-    // Select empty inputs
-    const emptyInputs = [...formInputs].filter(
+    // Select invalid inputs
+    const invalidInputs = [...formInputs].filter(
       (input) => !input.checkValidity(),
     );
 
     if (!form.checkValidity()) {
-      // Set className for empty inputs to highlight in red
-      emptyInputs.forEach((input) => input.classList.add('required-empty-input'));
+      // Set className for invalid inputs to highlight in red
+      invalidInputs.forEach((input) => input.classList.add('required-invalid-input'));
 
       // Set message if info fails to send
       block.appendChild(failMessage);
@@ -115,7 +115,7 @@ export default function decorate(block) {
     if (event.target.tagName === 'INPUT') {
       const input = event.target;
       if (input.value.trim()) {
-        input.classList.remove('required-empty-input');
+        input.classList.remove('required-invalid-input');
       }
     }
   });
