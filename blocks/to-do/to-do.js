@@ -122,7 +122,9 @@ export default async function decorate(block) {
       itemString += `${text}: ${status}; `;
     });
 
-    await saveListItems(itemString.trim());
+    const userId = Math.floor(Math.random() * 9000) + 1000;
+
+    await saveListItems(itemString.trim(), userId);
     orderedList.innerHTML = '';
   });
 

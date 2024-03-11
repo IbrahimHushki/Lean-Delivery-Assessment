@@ -1,5 +1,5 @@
-export default async function saveListItems(listItems) {
-  const dataObject = { data: { 'to-do': listItems } };
+export default async function saveListItems(listItems, userId) {
+  const dataObject = { data: { 'to-do': listItems, 'user-id': userId } };
 
   const response = await fetch('/to-do-form', {
     method: 'POST',
