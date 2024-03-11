@@ -1,12 +1,12 @@
-export default async function saveListItems() {
-  const listItems = { data: { 'to-do': 'task 5' } };
+export default async function saveListItems(listItems) {
+  const dataObject = { data: { 'to-do': listItems } };
 
   const response = await fetch('/to-do-form', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(listItems),
+    body: JSON.stringify(dataObject),
   });
 
   if (!response.ok) {

@@ -108,15 +108,30 @@ export default async function decorate(block) {
     input.value = '';
   };
 
+  saveItemsBtn.addEventListener('click', async () => {
+    const listItems = orderedList.querySelectorAll('li');
+    let itemString = '';
+
+    listItems.forEach((item) => {
+      const text = item.textContent.trim().replace(/[\u2716]/g, '');
+      const completed = item.getAttribute('data-completed');
+      let status = completed;
+      if (completed === 'undefined') {
+        status = false;
+      }
+      itemString += `${text}: ${status}; `;
+    });
+
+    await saveListItems(itemString.trim());
+    orderedList.innerHTML = '';
+  });
+
   // Event listeners
   addBtn.addEventListener('click', addToDo);
   input.addEventListener('keypress', (event) => {
     handleEnterKeyPress(event, addToDo);
   });
 
-  saveItemsBtn.addEventListener('click', saveListItems);
-
-  // Add event listeners
   if (!orderedList.getAttribute('data-has-listener')) {
     orderedList.addEventListener('click', deleteListItem);
     orderedList.addEventListener('change', changeItemStaus);
