@@ -56,6 +56,14 @@
       [data-completed="true"] {
         text-decoration: line-through;
       }
+
+      .to-do__success-message {
+        color: green;
+      }
+
+      .to-do__empty-list-message {
+        color: red;
+      }
     }
   }
 }

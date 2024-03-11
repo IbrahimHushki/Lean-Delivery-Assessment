@@ -58,6 +58,12 @@ if (!addBtn) {
 
 // Decorate block function
 export default async function decorate(block) {
+  // Success and failure messages when items are saved
+  const successMessage = document.createElement('h4');
+  const emptyTaskListMessage = document.createElement('h4');
+  successMessage.textContent = 'Tasks Saved Successfully';
+  emptyTaskListMessage.textContent = 'Task List is Empty';
+
   // Remove divs in the first column
   blockChildDivs.forEach((div) => {
     div.removeChild(div.firstElementChild);
@@ -71,6 +77,8 @@ export default async function decorate(block) {
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'to-do__input');
   orderedList.classList.add('to-do__ordered-list');
+  successMessage.classList.add('to-do__success-message');
+  emptyTaskListMessage.classList.add('to-do__empty-list-message');
 
   // Handle if title doesn't exist in the content source
   if (titleDiv) {
@@ -112,6 +120,15 @@ export default async function decorate(block) {
     const listItems = orderedList.querySelectorAll('li');
     let itemString = '';
 
+    // If task list is empty
+    if (listItems.length === 0) {
+      orderedList.appendChild(emptyTaskListMessage);
+      setTimeout(() => {
+        orderedList.removeChild(emptyTaskListMessage);
+      }, 3000);
+      return;
+    }
+
     listItems.forEach((item) => {
       const text = item.textContent.trim().replace(/[\u2716]/g, '');
       const completed = item.getAttribute('data-completed');
@@ -126,6 +143,10 @@ export default async function decorate(block) {
 
     await saveListItems(itemString.trim(), userId);
     orderedList.innerHTML = '';
+    orderedList.appendChild(successMessage);
+    setTimeout(() => {
+      orderedList.removeChild(successMessage);
+    }, 3000);
   });
 
   // Event listeners
