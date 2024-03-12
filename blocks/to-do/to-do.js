@@ -8,6 +8,7 @@ import saveListItems from './save-list-items.js';
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
 const blockChildDivs = document.querySelectorAll('.to-do > div');
+const wrapper = document.querySelector('.to-do-wrapper');
 
 // Create elements
 const input = document.createElement('input');
@@ -102,8 +103,7 @@ export default async function decorate(block) {
   // Loop through the data and add list items
   data.forEach((item) => {
     // Check for the "completed" value to set it as "data-completed" attribute
-    const completed = item.completed === 'true';
-    addListItem(item['to-do'], orderedList, completed);
+    addListItem(item['to-do'], orderedList, item.completed);
   });
 
   // Specify addListItem function parameters
@@ -132,9 +132,9 @@ export default async function decorate(block) {
     listItems.forEach((item) => {
       const text = item.textContent.trim().replace(/[\u2716]/g, '');
       const completed = item.getAttribute('data-completed');
-      let status = completed;
+      let status = 'done';
       if (completed === 'undefined') {
-        status = false;
+        status = 'open';
       }
       itemString += `${text}: ${status}; `;
     });
@@ -142,10 +142,10 @@ export default async function decorate(block) {
     const userId = Math.floor(Math.random() * 9000) + 1000;
 
     await saveListItems(itemString.trim(), userId);
-    orderedList.innerHTML = '';
-    orderedList.appendChild(successMessage);
+    block.remove();
+    wrapper.appendChild(successMessage);
     setTimeout(() => {
-      orderedList.removeChild(successMessage);
+      wrapper.removeChild(successMessage);
     }, 3000);
   });
 
