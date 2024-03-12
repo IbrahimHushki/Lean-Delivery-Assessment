@@ -2,6 +2,8 @@ import handleEnterKeyPress from '../../scripts/enter-key-press.js';
 import addListItem from './add-list-items.js';
 import getListItems from './get-list-items.js';
 import deleteListItem from './delete-item.js';
+import changeItemStaus from './change-item-status.js';
+import saveListItems from './save-list-items.js';
 
 // Selectors
 let addBtn = document.querySelector('.to-do .button-container');
@@ -12,12 +14,10 @@ const input = document.createElement('input');
 const orderedList = document.createElement('ol');
 const labelElement = document.createElement('label');
 // Save items button
-const saveItemsDiv = document.createElement('div');
-const saveItemsLink = document.createElement('a');
-saveItemsDiv.classList.add('button-container');
-saveItemsDiv.classList.add('to-do__save-button');
-saveItemsLink.textContent = 'Save';
-saveItemsDiv.appendChild(saveItemsLink);
+const saveItemsBtn = document.createElement('button');
+saveItemsBtn.classList.add('button-container');
+saveItemsBtn.classList.add('to-do__save-button');
+saveItemsBtn.textContent = 'Save';
 
 // Select divs based on content
 let titleDiv;
@@ -58,6 +58,12 @@ if (!addBtn) {
 
 // Decorate block function
 export default async function decorate(block) {
+  // Success and failure messages when items are saved
+  const successMessage = document.createElement('h4');
+  const emptyTaskListMessage = document.createElement('h4');
+  successMessage.textContent = 'Tasks Saved Successfully';
+  emptyTaskListMessage.textContent = 'Task List is Empty';
+
   // Remove divs in the first column
   blockChildDivs.forEach((div) => {
     div.removeChild(div.firstElementChild);
@@ -71,6 +77,8 @@ export default async function decorate(block) {
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'to-do__input');
   orderedList.classList.add('to-do__ordered-list');
+  successMessage.classList.add('to-do__success-message');
+  emptyTaskListMessage.classList.add('to-do__empty-list-message');
 
   // Handle if title doesn't exist in the content source
   if (titleDiv) {
@@ -85,7 +93,7 @@ export default async function decorate(block) {
 
   // Change content
   toDoInputAndBtn.appendChild(input);
-  toDoInputAndBtn.appendChild(saveItemsDiv);
+  toDoInputAndBtn.appendChild(saveItemsBtn);
   block.appendChild(orderedList);
 
   // Fetch data asynchronously
@@ -108,14 +116,48 @@ export default async function decorate(block) {
     input.value = '';
   };
 
+  saveItemsBtn.addEventListener('click', async () => {
+    const listItems = orderedList.querySelectorAll('li');
+    let itemString = '';
+
+    // If task list is empty
+    if (listItems.length === 0) {
+      orderedList.appendChild(emptyTaskListMessage);
+      setTimeout(() => {
+        orderedList.removeChild(emptyTaskListMessage);
+      }, 3000);
+      return;
+    }
+
+    listItems.forEach((item) => {
+      const text = item.textContent.trim().replace(/[\u2716]/g, '');
+      const completed = item.getAttribute('data-completed');
+      let status = completed;
+      if (completed === 'undefined') {
+        status = false;
+      }
+      itemString += `${text}: ${status}; `;
+    });
+
+    const userId = Math.floor(Math.random() * 9000) + 1000;
+
+    await saveListItems(itemString.trim(), userId);
+    orderedList.innerHTML = '';
+    orderedList.appendChild(successMessage);
+    setTimeout(() => {
+      orderedList.removeChild(successMessage);
+    }, 3000);
+  });
+
   // Event listeners
   addBtn.addEventListener('click', addToDo);
   input.addEventListener('keypress', (event) => {
     handleEnterKeyPress(event, addToDo);
   });
-  // Add only one event listener
+
   if (!orderedList.getAttribute('data-has-listener')) {
     orderedList.addEventListener('click', deleteListItem);
+    orderedList.addEventListener('change', changeItemStaus);
     orderedList.setAttribute('data-has-listener', 'true');
   }
 }

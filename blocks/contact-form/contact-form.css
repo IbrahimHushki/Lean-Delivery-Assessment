@@ -23,6 +23,10 @@
         order: 1;
         padding: 7px 5px;
       }
+
+      .required-invalid-input {
+        border-color: red;
+      }
     }
 
     .contact-form__button {
@@ -37,6 +41,14 @@
         cursor: pointer;
         background-color: var(--primary-hover);
       }
+    }
+
+    .contact-form__success-message {
+      color: green;
+    }
+
+    .contact-form__failed-message {
+      color:red;
     }
   }
 }
