@@ -132,10 +132,8 @@ export default async function decorate(block) {
     listItems.forEach((item) => {
       const text = item.textContent.trim().replace(/[\u2716]/g, '');
       const completed = item.getAttribute('data-completed');
-      let status = 'done';
-      if (completed === 'undefined') {
-        status = 'open';
-      }
+      const status = completed === 'undefined' ? 'open' : 'done';
+
       itemString += `${text}: ${status}; `;
     });
 
