@@ -1,6 +1,10 @@
 .to-do-container {
   margin: 20px 100px;
 
+  .to-do__success-message {
+    color: green;
+  }
+
   .to-do {
     display: flex;
     flex-direction: column;
@@ -53,12 +57,8 @@
         }
       }
 
-      [data-completed="true"] {
+      [data-completed="done"] {
         text-decoration: line-through;
-      }
-
-      .to-do__success-message {
-        color: green;
       }
 
       .to-do__empty-list-message {

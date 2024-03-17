@@ -14,7 +14,9 @@ export default function addListItem(inputValue, list, completed) {
   listItem.setAttribute('data-completed', completed);
   listItemCheckbox.setAttribute('type', 'checkbox');
 
-  listItemCheckbox.checked = completed;
+  if (completed === 'done') {
+    listItemCheckbox.checked = true;
+  }
 
   // Change content
   listItem.textContent = inputValue;
